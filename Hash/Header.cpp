@@ -11,8 +11,10 @@ void meniu() {
     cout << "3 - Sugeneruoti testini faila\n";
     cout << "4 - Koliziju paieska\n";
     cout << "5 - Efektyvumo matavimas\n";
-    cout << "6 - Baigti darba\n";
-    cout << "Pasirinkite (1, 2, 3, 4, 5, 6): ";
+    cout << "6 - Demonstracija input + salt\n";
+    cout << "7 - Lavinos efektas\n";
+    cout << "8 - Baigti darba\n";
+    cout << "Pasirinkite (1, 2, 3, 4, 5, 6, 7, 8): ";
     cin >> choice;
 }
 
@@ -322,3 +324,87 @@ void MatuotiEfektyvuma(const string& failas, int kartojimai) {
     }
 }
 
+
+
+// Generuoja atsitiktini salt
+string GeneruotiSalt(int ilgis, mt19937& gen) {
+    uniform_int_distribution<int> dist(0, charset.size() - 1);
+    string salt;
+    salt.reserve(ilgis);
+    for (int i = 0; i < ilgis; ++i) {
+        salt += charset[dist(gen)];
+    }
+    return salt;
+}
+
+// Demonstracija Hash(input + salt)
+void DemonstruotiNegriztamaHash(const string& input) {
+    random_device rd;
+    mt19937 gen(rd());
+
+    string salt = GeneruotiSalt(16, gen); // 16 simboliu salt
+    string hashSuSalt = Hashinimas(input + salt);
+
+    cout << "Originalus input: " << input << endl;
+    cout << "Salt: " << salt << endl;
+    cout << "Hash(input + salt): " << hashSuSalt << endl;
+
+    cout << "\nNet jei zinome hash, atstatyti originalu input be salt praktiskai neimanoma." << endl;
+}
+
+
+
+void LavinosEfektasIsFailo(const string& failas) {
+    ifstream fd(failas);
+    if (!fd.is_open()) {
+        cerr << "Nepavyko atidaryti failo: " << failas << endl;
+        return;
+    }
+
+    string a, b;
+    vector<int> bitDiffs;
+    vector<int> hexDiffs;
+
+    while (getline(fd, a)) {
+        if (!getline(fd, b)) break; // kiekviena pora = 2 eilutes
+
+        string hashA = Hashinimas(a);
+        string hashB = Hashinimas(b);
+
+        // Bitu skirtumas
+        int bitDiff = 0;
+        for (size_t i = 0; i < hashA.size(); ++i) {
+            uint8_t v1 = std::stoi(hashA.substr(i, 1), nullptr, 16);
+            uint8_t v2 = std::stoi(hashB.substr(i, 1), nullptr, 16);
+            bitDiff += std::bitset<4>(v1 ^ v2).count();
+        }
+
+        // Hex simboliu skirtumas
+        int hexDiff = 0;
+        for (size_t i = 0; i < hashA.size(); ++i) {
+            if (hashA[i] != hashB[i]) hexDiff++;
+        }
+
+        bitDiffs.push_back(bitDiff);
+        hexDiffs.push_back(hexDiff);
+    }
+
+    fd.close();
+
+    if (bitDiffs.empty()) {
+        cout << "Failas neturi pakankamai poru.\n";
+        return;
+    }
+
+    auto minBit = *min_element(bitDiffs.begin(), bitDiffs.end());
+    auto maxBit = *max_element(bitDiffs.begin(), bitDiffs.end());
+    double avgBit = accumulate(bitDiffs.begin(), bitDiffs.end(), 0.0) / bitDiffs.size();
+
+    auto minHex = *min_element(hexDiffs.begin(), hexDiffs.end());
+    auto maxHex = *max_element(hexDiffs.begin(), hexDiffs.end());
+    double avgHex = accumulate(hexDiffs.begin(), hexDiffs.end(), 0.0) / hexDiffs.size();
+
+    cout << "\n--- Lavinos efektas failui: " << failas << " ---\n";
+    cout << "Bitu skirtumas: min=" << minBit << ", max=" << maxBit << ", vid=" << avgBit << endl;
+    cout << "Hex simboliu skirtumas: min=" << minHex << ", max=" << maxHex << ", vid=" << avgHex << endl;
+}

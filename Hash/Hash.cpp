@@ -49,7 +49,22 @@ int main() {
 			MatuotiEfektyvuma("konstitucija.txt"); 
 		}
 
-		else if (choice == "6") { // baigiamas darbas
+		else if (choice == "6") { // Demonstracija input + salt
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Iveskite teksta demonstracijai: ";
+			getline(cin, input);
+			DemonstruotiNegriztamaHash(input);
+		}
+
+		else if (choice == "7") {  // Lavinos efektas
+			LavinosEfektasIsFailo("test_10.txt");
+			LavinosEfektasIsFailo("test_100.txt");
+			LavinosEfektasIsFailo("test_500.txt");
+			LavinosEfektasIsFailo("test_1000.txt");
+		
+		}
+
+		else if (choice == "8") { // baigiamas darbas
 			break;
 		}
 

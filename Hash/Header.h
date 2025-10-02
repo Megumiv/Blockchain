@@ -7,6 +7,9 @@
 #include <limits>
 #include <vector>
 #include <chrono>
+#include <bitset>
+#include <numeric>
+#include <algorithm>
 
 
 using std::string;
@@ -44,3 +47,8 @@ void Isvedimas(const string& filename, int out);
 void KolizijuPaieska(const string& failas); 
 void MatuotiEfektyvuma(const string& failas, int kartojimai = 5);
 
+
+void PatikrintiHashPoras(const string& failoVardas);
+void DemonstruotiNegriztamaHash(const string& input);
+
+void LavinosEfektasIsFailo(const std::string& failas);
