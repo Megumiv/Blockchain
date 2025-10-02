@@ -7,7 +7,6 @@
 
 using namespace std;
 
-string tekstas;
 string choice;
 string input;
 
@@ -56,6 +55,16 @@ int meniuGeneravimas() {
 	cout << "Pasirinkimas: ";
 	cin >> g;
 	return g;
+}
+
+int meniuOutput() {
+	int out;
+	cout << "\nKur norite isvesti rezultatus?\n";
+	cout << "1 - I ekrana\n";
+	cout << "2 - I faila (Rezultatai.txt)\n";
+	cout << "Pasirinkimas: ";
+	cin >> out;
+	return out;
 }
 
 
@@ -149,6 +158,43 @@ string Hashinimas(const string& input) {
 	return result; // galutinis 64 simboliu hash
 }
 
+
+// Funkcija nuskaito faila ir isveda hash rezultatus
+void Isvedimas(const string& filename, int out) {
+	ifstream fd(filename);
+
+	if (!fd.is_open()) {
+		cerr << "Nepavyko atidaryti failo: " << filename << endl;
+		return;
+	}
+
+	ofstream outFile;
+	if (out == 2) {
+		outFile.open("Rezultatai.txt");
+		if (!outFile.is_open()) {
+			cerr << "Nepavyko sukurti failo: Rezultatai.txt\n";
+			fd.close();
+			return;
+		}
+	}
+
+	string line;
+	while (getline(fd, line)) {
+		string hashed = Hashinimas(line);
+		if (out == 1) {
+			cout << hashed << endl;
+		}
+		else if (out == 2) {
+			outFile << hashed << endl;
+		}
+	}
+
+	fd.close();
+	if (outFile.is_open()) {
+		outFile.close();
+		cout << "Rezultatai irasyti i faila Rezultatai.txt sekmingai.\n";
+	}
+}
 
 
 

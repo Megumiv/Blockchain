@@ -14,7 +14,7 @@ int main() {
 
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			while (true) {
-				cout << "\nIveskite teksta (norint baigti darba - enter): \n";
+				cout << "\nIveskite teksta (norint baigti - enter): \n";
 				getline(cin, input);  // nuskaitoma eilute
 
 				if (input.empty()) {
@@ -26,9 +26,10 @@ int main() {
 		}
 
 		else if (choice == "2") { // nuskaitomas failas
-			string filename = meniuFailai(); // pasirenkamas nuskaitymo failas
-			//HASH
-			//cout << rezultatas;
+			string filename = meniuFailai();
+			int out = meniuOutput();
+			Isvedimas(filename, out);
+
 		}
 
 		else if (choice == "3") { // testiniu failu paruosimas
