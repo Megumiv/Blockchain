@@ -1,0 +1,25 @@
+﻿  Source.cpp
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(91,58): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(91,58): warning C4267:         with
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(91,58): warning C4267:         [
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(91,58): warning C4267:             _Ty=int
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(91,58): warning C4267:         ]
+  v0.2.cpp
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(126,74): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(126,74): warning C4267:         with
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(126,74): warning C4267:         [
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(126,74): warning C4267:             _Ty=int
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(126,74): warning C4267:         ]
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(165,74): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(165,74): warning C4267:         with
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(165,74): warning C4267:         [
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(165,74): warning C4267:             _Ty=int
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(165,74): warning C4267:         ]
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(387,58): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(387,58): warning C4267:         with
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(387,58): warning C4267:         [
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(387,58): warning C4267:             _Ty=int
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(387,58): warning C4267:         ]
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\Source.cpp(435,53): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  v0.2.vcxproj -> C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\New folder\v0.2\x64\Debug\v0.2.exe
