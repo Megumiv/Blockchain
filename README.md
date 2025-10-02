@@ -60,11 +60,11 @@ Funkcija Hashinimas(tekstas):
 <br/><br/>
 ## TYRIMO REZULTATAI IR IŠVADOS
 
-<br/> **Efektyvumo matavimas:** <br/>
+<br/> **EFEKTYVUMO MATAVIMAS:** <br/>
 <br/>![ ](<Screenshot 2025-10-02 132852.png>)
 <br/>![ ](<Screenshot 2025-10-02 133425.png>)
 
-<br/>**Kolizijų paieška.** <br/> Rezultatas - 0 kolizijų.
+<br/>**KOLIZIJU PAIESKA.** <br/> Rezultatas - 0 kolizijų.
 <br/> ![alt text](<Screenshot 2025-10-02 133000-1.png>)
 
 <br/><br/>
@@ -77,5 +77,17 @@ Funkcija Hashinimas(tekstas):
 - Rotacijos ir XOR nėra pakankamai stiprūs kriptografiškai: palyginti su profesionaliomis hash funkcijomis (pvz., SHA-256), šios operacijos nesuteikia aukšto atsparumo atakoms.
 
 
+**GAUTA** <br/>
+(Generuojami) testiniai failai:
+- failai su vienu simboliu (pvz. a , b ),
+- failai su daug (>1000) atsitiktinių simbolių,
+- failai su daug (>1000) atsitiktinių simbolių, kurie skiriasi tik vienu (pvz. viduriniu) simboliu,
+- tuščias failas.
+
+<br/>
+Patikrinamas išvedimo dydis – nepriklausomai nuo įvedimo, rezultatas visada tokio pat ilgio.
+<br/>
+Deterministiška.
+<br/>
 
 
