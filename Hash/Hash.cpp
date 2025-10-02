@@ -37,7 +37,19 @@ int main() {
 			Sugeneruota(gen, g);
 		}
 
-		else if (choice == "4") { // baigiamas darbas
+		else if (choice == "4") { // koliziju paieska
+			// Patikriname hash sutapimus kiekviename poru faile
+			KolizijuPaieska("test_10.txt");
+			KolizijuPaieska("test_100.txt");
+			KolizijuPaieska("test_500.txt");
+			KolizijuPaieska("test_1000.txt");
+		}
+
+		else if (choice == "5") { // efektyvumo matavimas
+			MatuotiEfektyvuma("konstitucija.txt"); 
+		}
+
+		else if (choice == "6") { // baigiamas darbas
 			break;
 		}
 
@@ -48,6 +60,4 @@ int main() {
 	}
 	return 0;
 }
-
-
 

@@ -18,10 +18,24 @@
     <ClCompile Include="Hash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Header.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="konstitucija.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="test_a.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="test_empty.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -1,0 +1,324 @@
+#include "Header.h"
+
+string choice;
+string input;
+
+// MENIU
+void meniu() {
+    cout << "\n\nMeniu: \n";
+    cout << "1 - Rankiniu budu ivesti teksta\n";
+    cout << "2 - Pasirinkti nuskaitoma faila\n";
+    cout << "3 - Sugeneruoti testini faila\n";
+    cout << "4 - Koliziju paieska\n";
+    cout << "5 - Efektyvumo matavimas\n";
+    cout << "6 - Baigti darba\n";
+    cout << "Pasirinkite (1, 2, 3, 4, 5, 6): ";
+    cin >> choice;
+}
+
+string meniuFailai() {
+    int nus = 0;
+    string filename;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    while (true) {
+        cout << "\nPasirinkite koki faila nuskaitysite:\n"
+            << "1 - test_empty.txt\n"
+            << "2 - test_random.txt\n"
+            << "3 - test_random2.txt\n"
+            << "4 - pats ivesiu pavadinima.\n";
+        cout << "Pasirinkimas: ";
+
+        string in;
+        getline(cin, in); 
+        try {
+            nus = stoi(in); // i int
+        }
+        catch (...) {
+            cout << "Neteisingas pasirinkimas. Bandykite dar karta.\n";
+            continue;
+        }
+        if (nus == 1) return "test_empty.txt";
+        if (nus == 2) return "test_random.txt";
+        if (nus == 3) return "test_random2.txt";
+        if (nus == 4) {
+            cout << "Iveskite failo pavadinima: ";
+            getline(cin, filename); 
+            if (!filename.empty())
+                return filename;
+            else
+                cout << "Failo pavadinimas negali buti tuscias.\n";
+        }
+        else {
+            cout << "Neteisingas pasirinkimas. Bandykite dar karta.\n";
+        }
+    }
+}
+
+int meniuGeneravimas() {
+    int g;
+    cout << "\nPasirinkite generavimo buda:\n";
+    cout << "1 - visiskai atsitiktiniai simboliai (keli po 1000)\n";
+    cout << "2 - atsitiktiniai simboliai (keli po 1000), kurie vienas nuo kito skiriasi tik 1 simboliu\n";
+    cout << "3 - 100 000 atsitiktiniu string poru, ilgiai: 10, 100, 500, 1000 simboliu\n";
+    cout << "Pasirinkimas: ";
+    cin >> g;
+
+    if (g < 1 || g > 3) {
+        cout << "Neteisingas pasirinkimas. Bandykite dar karta.\n";
+        return meniuGeneravimas();
+    }
+
+    return g;
+}
+
+int meniuOutput() {
+    int out;
+    cout << "\nKur norite isvesti rezultatus?\n";
+    cout << "1 - I ekrana\n";
+    cout << "2 - I faila (Rezultatai.txt)\n";
+    cout << "Pasirinkimas: ";
+    cin >> out;
+    return out;
+}
+
+// DUOMENU GENERAVIMAS
+const string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:,.<>?/";
+
+string Generavimas(int ilgis, mt19937& gen) {
+    uniform_int_distribution<int> dist(0, charset.size() - 1);
+    string eil;
+    for (int i = 0; i < ilgis; ++i)
+        eil += charset[dist(gen)];
+    return eil;
+}
+
+void Sugeneruota(mt19937& gen, int g) {
+
+    if (g == 1 || g == 2) {
+
+        string failas = (g == 1 ? "test_random.txt" : "test_random2.txt");
+        ofstream fd(failas);
+        if (!fd.is_open()) {
+            cerr << "Nepavyko atidaryti failo.\n";
+            return;
+        }
+
+        if (g == 1) {
+            for (int i = 0; i < 5; i++) {
+                string eilute = Generavimas(1000, gen);
+                fd << eilute << '\n';
+            }
+        }
+        else if (g == 2) {
+            string eilute = Generavimas(1000, gen);
+            fd << eilute << '\n';
+
+            uniform_int_distribution<int> pozicija(0, 999);
+            for (int i = 1; i < 5; i++) {
+                string naujas = eilute;
+                int idx = pozicija(gen);
+
+                char simbolis;
+                do {
+                    uniform_int_distribution<int> dist(0, charset.size() - 1);
+                    simbolis = charset[dist(gen)];
+                } while (simbolis == naujas[idx]);
+
+                naujas[idx] = simbolis;
+                fd << naujas << '\n';
+                eilute = naujas;
+            }
+        }
+
+        fd.close();
+        cout << "Sugeneruotas failas: " << failas << "\n";
+    }
+
+    else if (g == 3) { // Naujas pasirinkimas – 100 000 poru skirtingu ilgiu Koliziju paieskai
+        const int kiekis = 100000;
+        const std::vector<int> ilgiai = { 10, 100, 500, 1000 };
+
+        for (int ilgis : ilgiai) {
+            string failas = "test_" + std::to_string(ilgis) + ".txt";
+            ofstream fd(failas);
+            if (!fd.is_open()) {
+                cerr << "Nepavyko sukurti failo: " << failas << "\n";
+                continue;
+            }
+
+            // Sugeneruojame pirma eilute atsitiktinai
+            string eilute = Generavimas(ilgis, gen);
+            fd << eilute << '\n';
+
+            uniform_int_distribution<int> pozicija(0, ilgis - 1);
+
+            for (int i = 1; i < kiekis * 2; i++) { // *2, nes kiekviena pora = 2 eilutes
+                string naujas = eilute;
+                int idx = pozicija(gen);
+
+                // Pakeiciame viena simboli
+                char simbolis;
+                do {
+                    uniform_int_distribution<int> dist(0, charset.size() - 1);
+                    simbolis = charset[dist(gen)];
+                } while (simbolis == naujas[idx]);
+
+                naujas[idx] = simbolis;
+
+                fd << naujas << '\n';
+
+                eilute = naujas; // naujoji eilute tampa pagrindu tolimesniam generavimui
+            }
+
+            fd.close();
+            cout << "Sugeneruota " << kiekis << " poru (ilgis="
+                << ilgis << ") i faila " << failas << "\n";
+        }
+    }
+    else {
+        cerr << "Neteisingas pasirinkimas generavimui.\n";
+    }
+   
+}
+
+// HASHINIMAS
+string Hex(uint64_t x) {
+    const char* hexs = "0123456789abcdef";
+    string s(16, '0');
+    for (int i = 15; i >= 0; --i) {
+        s[i] = hexs[x & 0xF];
+        x >>= 4;
+    }
+    return s;
+}
+
+string Hashinimas(const string& input) {
+    uint64_t hash = 0xABCDEF1234567890ULL;
+    for (char c : input) {
+        hash = hash * 131 + (static_cast<unsigned char>(c) << 8);
+        hash ^= hash >> 17;
+    }
+
+    string result;
+    for (int i = 0; i < 4; ++i) {
+        hash = (hash << 15) | (hash >> 49);
+        result += Hex(hash);
+    }
+    return result;
+}
+
+void Isvedimas(const string& filename, int out) {
+    ifstream fd(filename);
+    if (!fd.is_open()) {
+        cerr << "Nepavyko atidaryti failo: " << filename << endl;
+        return;
+    }
+
+    ofstream outFile;
+    if (out == 2) {
+        outFile.open("Rezultatai.txt");
+        if (!outFile.is_open()) {
+            cerr << "Nepavyko sukurti failo: Rezultatai.txt\n";
+            fd.close();
+            return;
+        }
+    }
+
+    string line;
+    bool tuscias = true;
+
+    while (getline(fd, line)) {
+        string hashed = Hashinimas(line);
+
+        // Patikrinimas – rezultato ilgis visada 64 simboliai
+        if (hashed.size() != 64) {
+            cerr << "KLAIDA: neteisingas hash ilgis ("
+                << hashed.size() << " vietoj 64).\n";
+        }
+
+        if (out == 1) { // i ekrana
+            cout << hashed << endl;
+        }
+        else if (out == 2) { // i faila
+            outFile << hashed << endl;
+        }
+    }
+
+    if (tuscias) {
+        cout << "Failas tuscias: " << filename << endl;
+    }
+
+    fd.close();
+    if (outFile.is_open()) {
+        outFile.close();
+        cout << "Rezultatai irasyti i faila Rezultatai.txt sekmingai.\n";
+    }
+}
+
+
+// Patikrina kiek poru hash'ai sutampa
+void KolizijuPaieska(const string& failas) {
+    ifstream fd(failas);
+    if (!fd.is_open()) {
+        cout << "Nepavyko atidaryti failo: " << failas << "\n";
+        return;
+    }
+
+    string a, b;
+    int poruSk = 0;
+    int sutampanciuSk = 0;
+
+    while (fd >> a >> b) {  // nuskaityti dvi eilutes poroje
+        string hashA = Hashinimas(a);
+        string hashB = Hashinimas(b);
+
+        if (hashA == hashB) {
+            sutampanciuSk++;
+        }
+
+        poruSk++;
+    }
+
+    fd.close();
+
+    cout << "Failas: " << failas << "\n";
+    cout << "Poru skaicius: " << poruSk << "\n";
+    cout << "Sutampanciu hash skaicius: " << sutampanciuSk << "\n";
+    double procentai = (poruSk > 0) ? (100.0 * sutampanciuSk / poruSk) : 0;
+    cout << "Sutampanciu hash procentas: " << procentai << "%\n";
+}
+
+// Matuojamas efektyvumas, laikas su "konstitucija.txt"
+void MatuotiEfektyvuma(const string& failas, int kartojimai) {
+    ifstream fd(failas);
+    if (!fd.is_open()) {
+        cerr << "Nepavyko atidaryti failo: " << failas << "\n";
+        return;
+    }
+
+    std::vector<string> eilutes;
+    string line;
+    while (getline(fd, line)) {
+        eilutes.push_back(line);
+    }
+    fd.close();
+
+    for (size_t n = 1; n <= eilutes.size(); n *= 2) {
+        double suma = 0;
+
+        for (int k = 0; k < kartojimai; ++k) {
+            auto start = std::chrono::high_resolution_clock::now();
+            for (size_t i = 0; i < n && i < eilutes.size(); ++i) {
+                string h = Hashinimas(eilutes[i]);
+                (void)h; 
+            }
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double, std::milli> diff = end - start;
+            suma += diff.count();
+        }
+
+        cout << "Hashavimas " << n << " eiluciu (5 kartu vidurkis): " << suma / kartojimai << " ms\n";
+    }
+}
+

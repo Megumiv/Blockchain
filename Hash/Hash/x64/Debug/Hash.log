@@ -1,16 +1,17 @@
-﻿  Hash.cpp
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(75,55): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(75,55): warning C4267:         with
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(75,55): warning C4267:         [
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(75,55): warning C4267:             _Ty=int
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(75,55): warning C4267:         ]
-  (compiling source file 'Hash.cpp')
-  
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(112,58): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(112,58): warning C4267:         with
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(112,58): warning C4267:         [
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(112,58): warning C4267:             _Ty=int
-C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.h(112,58): warning C4267:         ]
-  (compiling source file 'Hash.cpp')
-  
+﻿  Header.cpp
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(89,58): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(89,58): warning C4267:         with
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(89,58): warning C4267:         [
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(89,58): warning C4267:             _Ty=int
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(89,58): warning C4267:         ]
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(124,74): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(124,74): warning C4267:         with
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(124,74): warning C4267:         [
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(124,74): warning C4267:             _Ty=int
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(124,74): warning C4267:         ]
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(163,74): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(163,74): warning C4267:         with
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(163,74): warning C4267:         [
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(163,74): warning C4267:             _Ty=int
+C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\Header.cpp(163,74): warning C4267:         ]
   Hash.vcxproj -> C:\Users\Ppere\Desktop\uni\3 semestras\Blockchain\Pratybos\Hash\x64\Debug\Hash.exe
