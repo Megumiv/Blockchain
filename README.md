@@ -67,6 +67,22 @@ Funkcija Hashinimas(tekstas):
 <br/>**KOLIZIJU PAIESKA.** <br/> Rezultatas - 0 kolizijų.
 <br/> ![alt text](<Screenshot 2025-10-02 133000-1.png>)
 
+
+<br/> **NEGRĮŽTAMUMAS** <br/>
+<img width="1033" height="156" alt="Screenshot 2025-10-02 141115" src="https://github.com/user-attachments/assets/60cbab20-b6ce-447c-bd89-c1bd95166973" />
+
+<br/> **LAVINOS EFEKTAS** <br/>
+UŽDUOTIS:
+- sugeneruok 100 000 porų, kurios skiriasi tik vienu simboliu,
+- pamatuok, kiek procentų skiriasi gautieji porų hash'ai:
+- -bit'ų lygmeniu,
+- -hex’ų lygmeniu.
+- parodyk minimalias, maksimalias ir vidutines skirtingumo reikšmes.
+<br/> REZULTATAS:
+<img width="632" height="334" alt="Screenshot 2025-10-02 141549" src="https://github.com/user-attachments/assets/458a41b1-cd33-4d6f-bcc8-660f62061b95" />
+
+
+
 <br/><br/>
 **Hash stiprybės:**
 - Net mažiausias įvesties pasikeitimas (vienas simbolis) labai pakeičia galutinį hash rezultatą (aukštas „avalanching“ efektas).
@@ -91,6 +107,8 @@ Deterministiška.
 <br/>
 
 Yra pasirinkimo meniu naudojimo palengvinimui.
-<img width="435" height="215" alt="Screenshot 2025-10-02 135948" src="https://github.com/user-attachments/assets/b6fb02ad-d54f-4ca1-bfeb-62d58b2b30c6" />
+<img width="493" height="223" alt="Screenshot 2025-10-02 141420" src="https://github.com/user-attachments/assets/c2cd4a85-248b-448a-99d1-ad78989816f0" />
+
+
 
 
