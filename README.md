@@ -58,21 +58,24 @@ Funkcija Hashinimas(tekstas):
 
 
 <br/><br/>
-## Tyrimo rezultatai ir išvados
+## TYRIMO REZULTATAI IR IŠVADOS
 
-<br/>Efektyvumo matavimas:<br/>
+<br/> **Efektyvumo matavimas:** <br/>
 <br/>![ ](<Screenshot 2025-10-02 132852.png>)
 <br/>![ ](<Screenshot 2025-10-02 133425.png>)
 
-<br/>Kolizijų paieška.<br/> Rezultatas - 0 kolizijų.
+<br/>**Kolizijų paieška.** <br/> Rezultatas - 0 kolizijų.
 <br/> ![alt text](<Screenshot 2025-10-02 133000-1.png>)
 
-<br/><br/>Hash stiprybės:
+<br/><br/>
+**Hash stiprybės:**
 - Net mažiausias įvesties pasikeitimas (vienas simbolis) labai pakeičia galutinį hash rezultatą (aukštas „avalanching“ efektas).
 - Fiksuotas ilgis: nepriklausomai nuo įvesties ilgio, rezultatas visada 64 simbolių.
-<br/>Hash silpnybės:
+<br/>
+**Hash silpnybės:**
 - Naudoja paprastą daugybą ir XOR, todėl gali būti pažeidžiamas prieš deterministines atakas, jei įvestis ribota arba modeliuojama.
 - Rotacijos ir XOR nėra pakankamai stiprūs kriptografiškai: palyginti su profesionaliomis hash funkcijomis (pvz., SHA-256), šios operacijos nesuteikia aukšto atsparumo atakoms.
+
 
 
 
