@@ -106,8 +106,9 @@ Patikrinamas išvedimo dydis – nepriklausomai nuo įvedimo, rezultatas visada 
 Deterministiška.
 <br/>
 
-Yra pasirinkimo meniu naudojimo palengvinimui.
+Yra pasirinkimo meniu naudojimo palengvinimui. <br/>
 <img width="493" height="223" alt="Screenshot 2025-10-02 141420" src="https://github.com/user-attachments/assets/c2cd4a85-248b-448a-99d1-ad78989816f0" />
+
 
 
 
