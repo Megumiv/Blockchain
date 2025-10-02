@@ -5,7 +5,7 @@
 **Maišos funkcija (hash function)** – tai algoritmas, kuris bet kokį įvedimą (input) paverčia fiksuoto dydžio pseudoatsitiktiniu simbolių rinkiniu (maišos kodu), tarsi „piršto atspaudu“.
 
 
-<br/> **Galutinė versija yra "Hash" aplanke** 
+<br/> **GALUTINĖ VERSIJA YRA "Hash" aplanke** 
 , o v0.2 yra bandymas pasitelkiant AI.
 
 <br/> **Sukurta hash funkcija atitinka šiuos reikalavimus:**    
@@ -110,6 +110,7 @@ Deterministiška.
 
 Yra pasirinkimo meniu naudojimo palengvinimui. <br/>
 <img width="493" height="223" alt="Screenshot 2025-10-02 141420" src="https://github.com/user-attachments/assets/c2cd4a85-248b-448a-99d1-ad78989816f0" />
+
 
 
 
