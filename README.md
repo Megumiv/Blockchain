@@ -2,11 +2,11 @@
 
 
 
-** Maišos funkcija (hash function) ** – tai algoritmas, kuris bet kokį įvedimą (input) paverčia fiksuoto dydžio pseudoatsitiktiniu simbolių rinkiniu (maišos kodu), tarsi „piršto atspaudu“.
+**Maišos funkcija (hash function)** – tai algoritmas, kuris bet kokį įvedimą (input) paverčia fiksuoto dydžio pseudoatsitiktiniu simbolių rinkiniu (maišos kodu), tarsi „piršto atspaudu“.
 
 
 
-<br/> ** Sukurta hash funkcija atitinka šiuos reikalavimus: **
+<br/> **Sukurta hash funkcija atitinka šiuos reikalavimus:**    
 
 1\. Įvedimas – bet kokio ilgio eilutė (string).
 
@@ -24,7 +24,7 @@
 
 
 
-# Pseudokodas
+## Pseudokodas
 
 
 <...>
