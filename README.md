@@ -2,7 +2,7 @@
 ## 2-oji užduotis: Supaprastintos blokų grandinės (Blockchain) kūrimas
 ---------------------------------------------------------------------
 
-**UŽDUOTIES TIKSLAS:**
+## **UŽDUOTIES TIKSLAS:**
 <br/>Sukurti supaprastintą blokų grandinę, imituojančią jos veikimą realiomis sąlygomis.<br/>
 Blokų grandinė yra nuoseklus blokų sąrašas, kuriame kiekvienas blokas susietas su ankstesnio bloko maišos reikšme (hash).<br/>
 Kiekvienas blokas turi dvi dalis: antraštę (Header) ir turinį (Body).
@@ -23,7 +23,7 @@ Sukurta blokų grandinė atitinka šiuos eigos punktus:
  4. Bloko kasimas (Proof-of-Work)
  5. Bloko patvirtinimas ir įtraukimas
 
-<br/><br/> Bloko struktūra pateikiama žemiau paveiksliuke:<br/>
+<br/><br/> Bloko struktūra pateikiama žemiau paveiksliuke:<br/><br/>
 <img width="1227" height="758" alt="blockstruct" src="https://github.com/user-attachments/assets/a744a083-4f4d-4bfe-ad0b-9d1ebdd615d9" /> 
 <br/>
 
@@ -37,13 +37,13 @@ Sukurta blokų grandinė atitinka šiuos eigos punktus:
 <br/>Įgyvendinta **Merkle Tree.**
 <br/>Imituojamas **decentralizuotas** kasimas. Bandoma kasti **ribotą bandymų skaičių.**<br/>
 
-
-
-<br/> <br/>Atliktas darbas iš pradžių leidžia pasirinkti meniu, ar norima 2-osios užduoties funkcionalumo, ar 1-osios (praeitos, skirtos hash kūrimui): <br/>
+<br/> <br/>Atliktas darbas iš pradžių leidžia pasirinkti meniu, ar norima 2-osios užduoties funkcionalumo, ar 1-osios (praeitos, skirtos hash kūrimui): <br/> 
+<br/>
 <img width="458" height="220" alt="prmeniu" src="https://github.com/user-attachments/assets/dc1b44c7-a7c0-485b-b3ce-fcd488f576ba" />
 
 
-<br/> <br/> Pasirinkus 2-ąją užduotį, rodomas šis meniu: <br/>
+<br/> <br/> Pasirinkus 2-ąją užduotį, rodomas šis meniu: <br/> 
+<br/>
 <img width="795" height="237" alt="blmeniu" src="https://github.com/user-attachments/assets/f20be7fd-c340-4b8e-8d5f-406d40eb0e6d" />
 
 
