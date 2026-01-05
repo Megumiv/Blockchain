@@ -29,13 +29,14 @@ Sukurta blokų grandinė atitinka šiuos eigos punktus:
 
 ## ATLIKTAS DARBAS
 
-<br/>Atlikta pagrindinė užduotis.
-<br/>+ papildomai: UTXO modelio realizavimas<br/>
+<br/>**Atlikta pagrindinė užduotis.**
+<br/>**+ papildomai: UTXO modelio realizavimas**<br/>
 
 <br/>Sukurta **centralizuota** blokų grandinė.
 <br/>Transakcijų ir bloko kūrimo bei kiti procesai **matomi konsolėje ir failuose.**
 <br/>Įgyvendinta **Merkle Tree.**
 <br/>Imituojamas **decentralizuotas** kasimas. Bandoma kasti **ribotą bandymų skaičių.**<br/>
+<br/>Naudojamos **gerosios OOP praktikos**: aiški klasės struktūra, enkapsuliacija, konstruktoriai, RAII idiomos taikymas.
 
 <br/> <br/>Atliktas darbas iš pradžių leidžia pasirinkti meniu, ar norima 2-osios užduoties funkcionalumo, ar 1-osios (praeitos, skirtos hash kūrimui): <br/> 
 <br/>
@@ -46,8 +47,31 @@ Sukurta blokų grandinė atitinka šiuos eigos punktus:
 <br/>
 <img width="795" height="237" alt="blmeniu" src="https://github.com/user-attachments/assets/f20be7fd-c340-4b8e-8d5f-406d40eb0e6d" />
 
+## GAUNAMI REZULTATAI
+
+<br/>Žemiau pateikiami išvestų failų rezultatai, kai kur pridėtas ir konsolės vaizdas (rezultatus galime dalinai matyti ir konsolėje paleidus užduotį, tik įrašyti didesni kiekį į failą - greičiau ir patogiau).<br/>
+
+<br/>
+IŠVEDAMI SUGENERUOTI VARTOTOJAI (konsolėje, paveiksliuke tik pirmieji matomi faile vartotojai.txt):<br/><br/>
+<img width="793" height="444" alt="m1" src="https://github.com/user-attachments/assets/27f975bc-cb6e-4e19-8fe1-675b39bd5248" />
+<br/> 
+<img width="1085" height="676" alt="t1" src="https://github.com/user-attachments/assets/5f9eaf10-c4c1-4064-a56b-52e9858ad3e0" />
+
+IŠVEDAMOS SUGENERUOTOS TRANSAKCIJOS (konsolėje, paveiksliuke tik pirmieji matomi faile transakcijos.txt):<br/><br/>
+<br/><img width="788" height="298" alt="m2" src="https://github.com/user-attachments/assets/48fb11f2-0696-4299-864e-17eec7c766e2" />
+<br/><img width="1072" height="675" alt="t2" src="https://github.com/user-attachments/assets/8e535233-81a5-4c61-b0c4-d18766245ff6" />
+
+<br/>IŠVEDAMI SUGENERUOTI BLOKAI (paveiksliuke tik paskutinios iŠvestys konsolėje ir tik pirmieji matomi faile blokas.txt):<br/><br/>
+<img width="647" height="409" alt="m3" src="https://github.com/user-attachments/assets/7b3975b1-e45d-40f9-b765-1356bfe0cf0d" />
+<br/> <img width="1086" height="674" alt="t3" src="https://github.com/user-attachments/assets/2c7fc439-c01c-459c-8fde-455a4e88faee" />
+
+<br/>IŠVEDAMA SUGENERUOTA GRANDINE (konsolėje, faile grandine.txt):<br/><br/>
+<img width="1178" height="409" alt="m4" src="https://github.com/user-attachments/assets/e34807b5-2a33-4aff-8a7b-21b1fef9c11e" />
+<br/> <img width="1081" height="277" alt="t4" src="https://github.com/user-attachments/assets/fb31bef6-11b9-4f66-887b-faa571995a68" />
+
+
 
 <br/><br/>
 ## AI NAUDOJIMAS
 
-AI pagalba buvo pasitelkiama šiems žingsniams: klasės sėkmingo kūrimo - naudotos gerosios OOP praktikos, kaip enkapsuliacija, konstruktoriai, RAII idiomos taikymas - užtikrinimui, UTXO modelio kūrimo analizei, bloko kasimo realizacijai (iš dalies), bendram kodo optimizavimui, klaidų paieškai.
+AI pagalba buvo pasitelkiama šiems žingsniams: klasės sėkmingo kūrimo - naudotos gerosios OOP praktikos, kaip enkapsuliacija, konstruktoriai, RAII idiomos taikymas - užtikrinimui, UTXO modelio kūrimo analizei, grandines realizacijai, bendram kodo optimizavimui, klaidų paieškai.
