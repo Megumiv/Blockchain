@@ -139,7 +139,7 @@ void Sugeneruota(mt19937& gen, int g) {
         cout << "Sugeneruotas failas: " << failas << "\n";
     }
 
-    else if (g == 3) { // Naujas pasirinkimas – 100 000 poru skirtingu ilgiu Koliziju paieskai
+    else if (g == 3) { // Naujas pasirinkimas ? 100 000 poru skirtingu ilgiu Koliziju paieskai
         const int kiekis = 100000;
         const std::vector<int> ilgiai = { 10, 100, 500, 1000 };
 
@@ -235,7 +235,7 @@ void Isvedimas(const string& filename, int out) {
     while (getline(fd, line)) {
         string hashed = Hashinimas(line);
 
-        // Patikrinimas – rezultato ilgis visada 64 simboliai
+        // Patikrinimas ? rezultato ilgis visada 64 simboliai
         if (hashed.size() != 64) {
             cerr << "KLAIDA: neteisingas hash ilgis ("
                 << hashed.size() << " vietoj 64).\n";

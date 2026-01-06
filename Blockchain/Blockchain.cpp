@@ -7,23 +7,24 @@ string uzduotis;
 string choose;
 
 void meniu() {
-	cout << "\nPasirinkite kuria uzduoti pateikti:\n";
-	cout << "1 uzduotis - Hash funkcija\n";
-	cout << "2 uzduotis - Blockchain kurimas\n";
-	cout << "3 - Baigti darba\n";
-	cout << "Iveskite pasirinkima (1, 2, 3): ";
-	cin >> uzduotis;
+    cout << "\nPasirinkite kuria uzduoti pateikti:\n";
+    cout << "1 uzduotis - Hash funkcija\n";
+    cout << "2 uzduotis - Blockchain kurimas\n";
+    cout << "3 - Baigti darba\n";
+    cout << "Iveskite pasirinkima (1, 2, 3): ";
+    cin >> uzduotis;
 }
 
 void meniuBlock() {
-	cout << "\n\nBlockchain meniu:\n";
-	cout << "1 - Vartotoju generavimas\n";
-	cout << "2 - Transakciju generavimas\n";
-	cout << "3 - Bloko formavimas\n";
-	cout << "4 - Bloko kasimas ir duomenu atnaujinimas, itraukimas i grandine\n";
-	cout << "5 - Baigti darba\n";
-	cout << "Pasirinkite (1, 2, 3, 4, 5): ";
-	cin >> choose; 
+    cout << "\n\nBlockchain meniu:\n";
+    cout << "1 - Vartotoju generavimas\n";
+    cout << "2 - Transakciju generavimas\n";
+    cout << "3 - Bloko formavimas\n";
+    cout << "4 - Bloko kasimas (eilinis)\n";
+    cout << "5 - Bloko kasimas (lygiagretaus)\n";
+    cout << "6 - Baigti darba\n";
+    cout << "Pasirinkite (1, 2, 3, 4, 5, 6): ";
+    cin >> choose;
 }
 
 
@@ -98,7 +99,7 @@ void UserGenerator::saveToFile() const { // RAII: out uzsidaro automatiskai
 
 
 void UserGenerator::printSample(int n) const {
-    
+
     cout << "Pirmi " << n << " pavyzdziai (sutrumpinta):\n";
     for (int i = 0; i < n && i < (int)users.size(); ++i) {
         const auto& u = users[i];
@@ -106,7 +107,7 @@ void UserGenerator::printSample(int n) const {
             << " | Key: " << u.getPublicKey().substr(0, 20) << "..."
             << " | Balansas: " << u.getBalance() << "\n";
     }
-    
+
 }
 
 
@@ -217,7 +218,7 @@ void TransactionGenerator::saveToFile(const string& filename) const {
         out << "================================================================================\n\n";
     }
 
-    cout << "\nTransakcijos issaugotos faile '" << filename <<"\n";
+    cout << "\nTransakcijos issaugotos faile '" << filename << "\n";
 }
 
 
@@ -415,12 +416,133 @@ string MineBlock(Block& block, int difficulty, uint64_t maxAttempts) {
 
     if (nonce >= maxAttempts) {
         cout << "Nepavyko iskasti bloko per " << maxAttempts << " bandymu. Procesas sustabdytas.\n";
-            block.header.nonce = nonce;
+        block.header.nonce = nonce;
     }
 
-    
+
 
     return hash;
+}
+
+
+// LYGIAGRETAUS KASIMO FUNKCIJA
+
+void MineWorker(
+    const BlockHeader& header,
+    int difficulty,
+    uint64_t startNonce,
+    uint64_t endNonce,
+    std::atomic<bool>& found,
+    std::atomic<uint64_t>& resultNonce,
+    string& resultHash,
+    std::mutex& resultMutex,
+    int threadId
+) {
+    string prefix(difficulty, '0');
+
+    for (uint64_t nonce = startNonce; nonce < endNonce && !found.load(); ++nonce) {
+        string headerData = header.prevBlockHash
+            + std::to_string(header.timestamp)
+            + std::to_string(header.version)
+            + header.merkleRoot
+            + std::to_string(nonce)
+            + std::to_string(header.difficulty);
+
+        string hash = Hashinimas(headerData);
+
+        if (hash.substr(0, difficulty) == prefix) {
+            bool expected = false;
+            if (found.compare_exchange_strong(expected, true)) {
+                // Pirmas thread'as, kuris rado sprendima
+                resultNonce.store(nonce);
+                {
+                    std::lock_guard<std::mutex> lock(resultMutex);
+                    resultHash = hash;
+                }
+                cout << "\n[Thread " << threadId << "] Rado sprendima! Nonce: " << nonce << "\n";
+            }
+            return;
+        }
+
+        // Periodiskai pranesti apie progresa (kas 100000 bandymu)
+        if (nonce % 100000 == 0 && nonce > startNonce) {
+            cout << "[Thread " << threadId << "] Patikrinta: " << (nonce - startNonce) << " nonce reiksmiu...\r" << std::flush;
+        }
+    }
+}
+
+
+string MineBlockParallel(Block& block, int difficulty, uint64_t maxAttempts, int numThreads) {
+    // Jei numThreads = 0, naudojame visus galimus CPU branduolius
+    if (numThreads <= 0) {
+        numThreads = std::thread::hardware_concurrency();
+        if (numThreads == 0) numThreads = 4; // default, jei nepavyko nustatyti
+    }
+
+    cout << "\nPradedamas lygiagretaus kasimas su " << numThreads << " thread'ais...\n";
+    cout << "Sunkumas: " << difficulty << " (ieskoma hash su " << difficulty << " nuliais priekyje)\n";
+    cout << "Maksimalus bandymu skaicius: " << maxAttempts << "\n\n";
+
+    auto startTime = std::chrono::high_resolution_clock::now();
+
+    std::atomic<bool> found(false);
+    std::atomic<uint64_t> resultNonce(0);
+    string resultHash;
+    std::mutex resultMutex;
+
+    vector<std::thread> threads;
+    uint64_t range = maxAttempts / numThreads;
+
+    // Sukuriame thread'us
+    for (int i = 0; i < numThreads; ++i) {
+        uint64_t start = i * range;
+        uint64_t end = (i == numThreads - 1) ? maxAttempts : (i + 1) * range;
+
+        threads.emplace_back(
+            MineWorker,
+            std::ref(block.header),
+            difficulty,
+            start,
+            end,
+            std::ref(found),
+            std::ref(resultNonce),
+            std::ref(resultHash),
+            std::ref(resultMutex),
+            i + 1
+        );
+    }
+
+    // Laukiame kol visi thread'ai baigs darba
+    for (auto& t : threads) {
+        t.join();
+    }
+
+    auto endTime = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = endTime - startTime;
+
+    if (found.load()) {
+        block.header.nonce = resultNonce.load();
+        cout << "\n\n=== BLOKAS SEKMINGAI ISKASTAS ===\n";
+        cout << "Laikas: " << elapsed.count() << " sekundes\n";
+        cout << "Nonce: " << block.header.nonce << "\n";
+        cout << "Hash: " << resultHash << "\n";
+        cout << "Greitis: " << (block.header.nonce / elapsed.count()) << " hash/s\n";
+        return resultHash;
+    }
+    else {
+        block.header.nonce = maxAttempts;
+        cout << "\n\nNepavyko iskasti bloko per " << maxAttempts << " bandymu.\n";
+        cout << "Laikas: " << elapsed.count() << " sekundes\n";
+
+        // Graziname paskutini hash
+        string headerData = block.header.prevBlockHash
+            + std::to_string(block.header.timestamp)
+            + std::to_string(block.header.version)
+            + block.header.merkleRoot
+            + std::to_string(block.header.nonce)
+            + std::to_string(block.header.difficulty);
+        return Hashinimas(headerData);
+    }
 }
 
 

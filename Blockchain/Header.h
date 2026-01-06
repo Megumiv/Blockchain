@@ -15,6 +15,9 @@
 #include <sstream>
 //#include <filesystem> // C++17
 #include <memory>
+#include <thread>
+#include <mutex>
+#include <atomic>
 
 
 
@@ -105,9 +108,9 @@ public:
     void printSample(int n = 5) const;
 
     const vector<User>& getUsers() const;
-    vector<User>& getUsers(); 
+    vector<User>& getUsers();
 
-    void loadFromFile(const string& filename = "vartotojai.txt"); 
+    void loadFromFile(const string& filename = "vartotojai.txt");
 };
 
 
@@ -141,7 +144,7 @@ public:
     void saveToFile(const string& filename = "transakcijos.txt") const;
 
     const vector<Transaction>& getTransactions() const;
-    vector<Transaction>& getTransactions(); 
+    vector<Transaction>& getTransactions();
 
     void loadFromFile(const string& filename = "transakcijos.txt");
 };
@@ -185,7 +188,10 @@ void loadFromFile(const string& filename = "transakcijos.txt");
 // BLOKO KASIMAS
 
 // Proof-of-Work funkcija
-string MineBlock(Block& block, int difficulty = 3, uint64_t maxAttempts = 5000000); 
+string MineBlock(Block& block, int difficulty = 3, uint64_t maxAttempts = 5000000);
+
+// Lygiagretaus kasimo funkcija
+string MineBlockParallel(Block& block, int difficulty = 3, uint64_t maxAttempts = 5000000, int numThreads = 0);
 
 
 

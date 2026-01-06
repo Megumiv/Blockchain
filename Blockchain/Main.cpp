@@ -17,7 +17,7 @@ int main() {
 		//if (uzduotis == "1" || uzduotis == "2") {
 		//	break;
 		//}
-		
+
 		// 1 UZDUOTIS
 		if (uzduotis == "1") {
 
@@ -160,7 +160,7 @@ int main() {
 
 					// Bloku formavimas - visu bloku generavimas
 					cout << "Bloku formavimas pradetas.\n";
-				
+
 
 					if (!tgPtr) {
 						cout << "Ikeliami vartotojai ir transakcijos is failu...\n";
@@ -212,7 +212,7 @@ int main() {
 
 				}
 
-				else if (choose == "4") { // Bloku kasimas
+				else if (choose == "4") { // Bloku kasimas (eilinis)
 
 					// Patikriname, ar blokas jau sugeneruotas arba galima ikelti is failo
 					if (!blockGenerated) {
@@ -245,7 +245,7 @@ int main() {
 						continue;
 					}
 
-					cout << "Pradedamas bloko kasimas (Proof-of-Work)...\n";
+					cout << "Pradedamas EILINIS bloko kasimas (Proof-of-Work)...\n";
 					string minedHash = MineBlock(currentBlock, 3); // Naudojamas tas pats blokas
 
 					if (minedHash.substr(0, 3) == string(3, '0')) { // jei sekmingai iskasta
@@ -267,7 +267,70 @@ int main() {
 						currentBlock.transactions.clear();
 						blockGenerated = false;
 					}
-					
+
+				}
+
+
+				else if (choose == "5") { // Bloku kasimas (lygiagretaus)
+
+					// Patikriname, ar blokas jau sugeneruotas arba galima ikelti is failo
+					if (!blockGenerated) {
+						if (fileExists("blokas.txt")) {
+							if (LoadBlockFromFile(currentBlock, "blokas.txt")) {
+								// Jei dar neturime tgPtr, ikeliame transakcijas
+								if (!tgPtr) {
+									ug.loadFromFile("vartotojai.txt");
+									tgPtr = std::make_unique<TransactionGenerator>(ug.getUsers(), 0);
+									tgPtr->loadFromFile("transakcijos.txt");
+								}
+								currentBlock.transactions = tgPtr->getTransactions();
+								blockGenerated = true;
+								cout << "\nBlokas ikeltas is failo 'blokas.txt' su transakcijomis.\n";
+							}
+							else {
+								cout << "Nepavyko ikelti bloko is failo.\n";
+								continue;
+							}
+						}
+						else {
+							cout << "Pirmiausia sugeneruokite bloka (meniu pasirinkimas 3).\n";
+							continue;
+						}
+					}
+
+					// Tikriname, ar blokas turi transakciju
+					if (currentBlock.transactions.empty()) {
+						cout << "Blokas neturi transakciju, negalimas kasimas.\n";
+						continue;
+					}
+
+					// Pasirinkti threadu skaiciu
+					int numThreads;
+					cout << "\nIveskite threadu skaiciu (0 = automatinis): ";
+					cin >> numThreads;
+
+					cout << "\nPradedamas LYGIAGRETAUS bloko kasimas (Proof-of-Work)...\n";
+					string minedHash = MineBlockParallel(currentBlock, 3, 5000000, numThreads);
+
+					if (minedHash.substr(0, 3) == string(3, '0')) { // jei sekmingai iskasta
+
+						cout << "\nBlokas sekmingai iskastas! Hash: " << minedHash << "\n";
+						currentBlock.hash = minedHash; // Issaugome hash i bloko struktura 
+
+						// Issaugome iskasta bloka i nauja faila 'iskastas.txt'
+						if (tgPtr) {
+							BlockGenerator bg(tgPtr->getTransactions());
+							bg.saveBlockToFile(currentBlock, "iskastas.txt"); // naujas failas
+						}
+
+						// Bloko patvirtinimas ir itraukimas i grandine
+						processBlock(currentBlock, ug, tgPtr);
+
+						// Isvalome currentBlock, kad kitas blokas butu naujas
+						currentBlock.transactions.clear();
+						blockGenerated = false;
+					}
+
 				}
 
 
@@ -275,7 +338,7 @@ int main() {
 					//processBlock(currentBlock, ug, tgPtr);
 				//}
 
-				else if (choose == "5") { // baigiamas darbas
+				else if (choose == "6") { // baigiamas darbas
 					break;
 				}
 
