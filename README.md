@@ -30,7 +30,7 @@ Sukurta blokų grandinė atitinka šiuos eigos punktus:
 ## ATLIKTAS DARBAS
 
 <br/>**Atlikta pagrindinė užduotis.**
-<br/>**+ papildomai: UTXO modelio realizavimas**<br/>
+<br/>**+ papildomai: UTXO modelio realizavimas**
 <br/>**+ papildomai: Lygiagretus kasimo procesas**<br/>
 
 <br/>Sukurta **centralizuota** blokų grandinė.
