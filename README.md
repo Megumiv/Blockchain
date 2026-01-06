@@ -31,6 +31,7 @@ Sukurta blokų grandinė atitinka šiuos eigos punktus:
 
 <br/>**Atlikta pagrindinė užduotis.**
 <br/>**+ papildomai: UTXO modelio realizavimas**<br/>
+<br/>**+ papildomai: Lygiagretus kasimo procesas**<br/>
 
 <br/>Sukurta **centralizuota** blokų grandinė.
 <br/>Transakcijų ir bloko kūrimo bei kiti procesai **matomi konsolėje ir failuose.**
@@ -44,8 +45,9 @@ Sukurta blokų grandinė atitinka šiuos eigos punktus:
 
 
 <br/> <br/> Pasirinkus 2-ąją užduotį, rodomas šis meniu: <br/> 
-<br/>
-<img width="795" height="237" alt="blmeniu" src="https://github.com/user-attachments/assets/f20be7fd-c340-4b8e-8d5f-406d40eb0e6d" />
+<br/> <img width="391" height="215" alt="image" src="https://github.com/user-attachments/assets/415f9599-16f0-4523-a6f1-110ac79bdf8d" />
+
+
 
 ## GAUNAMI REZULTATAI
 
