@@ -1,5 +1,4 @@
-# 4-asis darbas: išmaniosios sutarties ir
-decentralizuotos aplikacijos kūrimas
+# 4-asis darbas: išmaniosios sutarties ir decentralizuotos aplikacijos kūrimas
 
 ## TIKSLAS IR REIKALAVIMAI
 
