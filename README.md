@@ -15,6 +15,9 @@ Ethereum tinklą.
 - Išmaniosios sutarties testavimui naudokite lokalų ir viešąjį Ethereum testinius tinklus (angl.
 testnet), pvz., Sepolia.
 
+
+
+
 ## DARBO EIGA
 
 1. Realizuokite **verslo logiką išmanioje sutartyje Solidyti kalboje.**
@@ -24,6 +27,7 @@ testnet), pvz., Sepolia.
 **"logus".**
 5. Sukurkite decentralizuotos aplikacijos **Front-End** (tinklapį arba mobiliąją aplikaciją), kuri
 įgalintų bendravimą su išmaniąja sutartimi.
+
 
 
 ## ATLIKTA UžDUOTIS 
@@ -37,6 +41,8 @@ Išmanioji sutartis užtikrina:
 - pasitikėjimo nereikalaujantį atsiskaitymą,
 - aiškiai apibrėžtą paslaugos vykdymo procesą.
 
+
+
   
 # VERSLO MODELIO APRAŠYMAS
 
@@ -48,13 +54,17 @@ Išmanioji sutartis užtikrina:
 - Išmanioji sutartis (eSutartis) - Laiko pinigus escrow, valdo užduočių statusus, saugo verslo logiką ir perveda lėšas
 
 
+
+
 # GALIMI VERSLO MODELIO SCENARIJAI
+
 
 A SCENARIJUS. **SĖKMINGAS DIZAINO KŪRIMO UŽSAKYMAS**
    1. Klientas (gali būti įmonė) turi svetainės dizaino sukūrimo poreikį - jis sukuria dizaino užduotį. Perveda ETH į eSutartis.
    2. Specialistas, išmanantis šią sritį priima užduotį ir ją atlieka - sukuria reikiamo dizaino failus.
    3. Specialistas tuomet pažymi sistemoje užduotį kaip atliktą.
    4. Klientui (įmonės atstovui) patvirtinus atliktą darbą, pervedami ETH specialistui.
+
 
 B SCENARIJUS. **NESĖKMINGAS DESERTŲ KEPINIŲ UŽSAKYMAS**
    1. Klientas nori užsakyti itin didelį pyragaičių kiekį svarbiems asmenims, turi specialių ir griežtų reikalavimų, ilgą alergenų sąrašą. Sukuria užduotį sistemoje ir perveda ETH į eSutartis.
@@ -64,10 +74,12 @@ B SCENARIJUS. **NESĖKMINGAS DESERTŲ KEPINIŲ UŽSAKYMAS**
 
 
 
+
 # SEKŲ EIGA
 
 Verslo modelio šalių tarpusavio sąveikos seka aprašyta žemiau su detalesniais komentarais bei po juo pavaizduota **sekų diagrama (angl.
 Sequence diagram).** 
+
 
 1. Užduoties kūrimas - **createTask()**
    - Client sukuria užduotį ir siunčia ETH į sutartį.
@@ -92,12 +104,14 @@ Sequence diagram).**
    - ETH grąžinamas Klientui.
 
 
-  
+
+# Sekų diagrama (angl.Sequence diagram)
 <br/>
 <br/> **Sekų diagramos (angl. Sequence diagram)** vaizdavimui pasirinkta išbandyti internetinius tekstinių diagramų įrankius: https://sequencediagram.org/ ir 
-https://www.planttext.com/. Gautas rezultatas vaizduojamas žemiau pasitelkus antrąją PlantUML priemonę (naršyklės versija - https://www.planttext.com/).
+https://www.planttext.com/. Gautas rezultatas vaizduojamas žemiau pasitelkus antrąją PlantUML priemonę (naršyklės versija - https://www.planttext.com/).<br/>
 
 <img width="425" height="542" alt="image" src="https://github.com/user-attachments/assets/095053bf-aa8a-4739-ba06-53a1d402b7fe" />
+
 
 <br/> 
 Naudotas tekstas diagramai gauti: <br/>
@@ -110,6 +124,7 @@ Testavimas buvo sėkminags.
 Išmaniosios sutarties veikimas ištestuotas Euthereum lokaliame tinkle - REMIX VM (Prague).
 Žemiau pateiktos testavimo ekrano nuotraukos:
 <br/>
+
 
 <img width="1919" height="992" alt="Screenshot 2026-01-06 024906" src="https://github.com/user-attachments/assets/0ae4b0e1-f8f1-462f-a20c-a59b74ea8142" />
 
@@ -127,6 +142,8 @@ Išmaniosios sutarties veikimas ištestuotas Euthereum lokaliame tinkle - REMIX 
 
 
 
+
+
 ## TESTAVIMAS ETHEREUM TESTINIAME TINKLE - SEPOLIA
 
 Buvo atliktas kitas testavimas - Ethereum testiniame tinkle - **Sepolia.**
@@ -138,24 +155,42 @@ REMIX programa buvo sujungta su MetaMask pinigine bei pasirinkta Sepolia aplinka
 <img width="444" height="380" alt="Screenshot 2026-01-06 062514" src="https://github.com/user-attachments/assets/2da9e1e8-ddb7-4ea5-9851-63f11b3ba22f" />
 
 
+
+
+
 TESTAVIMAS:
 
 Paspausta "deploy". Vaizdas REMIX programoje ir MetaMask patvirtinimo reikėjimas vaizduojamas nuotraukose žemiau bei rezultatas:
+
 <img width="1919" height="1013" alt="Screenshot 2026-01-06 062926" src="https://github.com/user-attachments/assets/4454bba0-79e4-4f84-9645-34a08b76e929" />
+
 <img width="464" height="894" alt="Screenshot 2026-01-06 063001" src="https://github.com/user-attachments/assets/7395cccc-d972-43d4-af1f-7f0c51f9733e" />
+
 <img width="467" height="881" alt="Screenshot 2026-01-06 063041" src="https://github.com/user-attachments/assets/407d05ee-9764-47a1-b99d-f9dd37f1f94f" />
+
 <img width="1437" height="395" alt="Screenshot 2026-01-06 063110" src="https://github.com/user-attachments/assets/827ca3c7-24b2-4380-b341-0ce84ea51615" />
 
+
+
 Deploy'into kontrakto funkcijos REMIX programoje:
+
 <img width="357" height="657" alt="image" src="https://github.com/user-attachments/assets/bbbf9a86-b2c9-4a25-8b4f-af658c2f3be6" />
 
+
+
 Nukopijuotas kontrakto adresas (angl. contract address) tolimesniam testavimui:
+
 <img width="1480" height="676" alt="Screenshot 2026-01-06 063156" src="https://github.com/user-attachments/assets/6c7d3171-0334-4253-8176-24048c2832ef" />
 
 
+
 AcceptTask, markCompleted, getTask, createTask suveikė sėkmingai. Tačiau paskutinis žingsnis - confirmAndPay - nepavyko. Rezultatai žemiau ekrano nuotraukose:
+
 <img width="1474" height="866" alt="Screenshot 2026-01-06 064809" src="https://github.com/user-attachments/assets/760779fc-e529-48d1-97ac-cf85e54a24e7" />
+
 <img width="446" height="428" alt="Screenshot 2026-01-06 065004" src="https://github.com/user-attachments/assets/48763a40-2f18-4a9e-b646-a10d62c253db" />
+
+
 
 
 # ETHERSCAN IR SUTARTIES VYKDYMO "LOGS"
