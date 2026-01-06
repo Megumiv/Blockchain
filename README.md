@@ -34,7 +34,7 @@ testnet), pvz., Sepolia.
 
 Pasirinktas **kitas sukurtas verslo modelis** nei pavyzdyje (**papildomiems balams**) ir jo pagrindu įgyvendinta išmanioji sutartis.
 **Papildomai** - aprašomas išsamiau su scenarijais, sekų diagrama (angl. Sequence diagram) čia, ReadME faile.
-**Sukurtas decentralizuotos aplikacijos Front-End.**
+
 
 Išmanioji sutartis užtikrina:
 - skaidrų mokėjimų valdymą,
