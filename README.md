@@ -1,4 +1,5 @@
-# Blockchain
+# 4-asis darbas: išmaniosios sutarties ir
+decentralizuotos aplikacijos kūrimas
 
 ## TIKSLAS IR REIKALAVIMAI
 
@@ -44,7 +45,7 @@ Išmanioji sutartis užtikrina:
 
 
   
-# VERSLO MODELIO APRAŠYMAS
+## VERSLO MODELIO APRAŠYMAS
 
 Ši sukurta išmanioji sutartis leidžia bet kokiam **užsakovui** (kode - **client**) saugiai užsisakyti paslaugas, o **samdomam specialistui / pardavėjui / tiekėjui** ( kode - **freelancer**) jas atlikti. Mokėjimas laikomas išmaniojoje sutartyje pavadinimu **eSutartis**, kuri užtikrina, kad pinigai bus pervesti **tik atlikus užduotį ir tai patvirtinus**, su galimybe užduotį atšaukti.
 
@@ -56,7 +57,7 @@ Išmanioji sutartis užtikrina:
 
 
 
-# GALIMI VERSLO MODELIO SCENARIJAI
+## GALIMI VERSLO MODELIO SCENARIJAI
 
 
 A SCENARIJUS. **SĖKMINGAS DIZAINO KŪRIMO UŽSAKYMAS**
@@ -75,7 +76,7 @@ B SCENARIJUS. **NESĖKMINGAS DESERTŲ KEPINIŲ UŽSAKYMAS**
 
 
 
-# SEKŲ EIGA
+## SEKŲ EIGA
 
 Verslo modelio šalių tarpusavio sąveikos seka aprašyta žemiau su detalesniais komentarais bei po juo pavaizduota **sekų diagrama (angl.
 Sequence diagram).** 
@@ -105,7 +106,7 @@ Sequence diagram).**
 
 
 
-# Sekų diagrama (angl.Sequence diagram)
+### Sekų diagrama (angl.Sequence diagram)
 <br/>
 <br/> **Sekų diagramos (angl. Sequence diagram)** vaizdavimui pasirinkta išbandyti internetinius tekstinių diagramų įrankius: https://sequencediagram.org/ ir 
 https://www.planttext.com/. Gautas rezultatas vaizduojamas žemiau pasitelkus antrąją PlantUML priemonę (naršyklės versija - https://www.planttext.com/).<br/>
@@ -193,7 +194,7 @@ AcceptTask, markCompleted, getTask, createTask suveikė sėkmingai. Tačiau pask
 
 
 
-# ETHERSCAN IR SUTARTIES VYKDYMO "LOGS"
+## ETHERSCAN IR SUTARTIES VYKDYMO "LOGS"
 
 Taip pat peržiūrėti vykdymo rezultatai per ETHEREUM ETHERSCAN. Siekant matyti šią informaciją, iš seniau REMIX buvo nukopijuotas kontrakto adresas (0x28c07321731487072a7e0c52437f93882fdbb6be), pagal kurį tai randama. Rezultatai pateikiami žemiau.
 
